@@ -21,7 +21,15 @@ Agregar en /etc/fstab el disco para que lo monte en el arranque (uid y gid 1001 
 * pihole: server dns
 * samba: dos recursos compartidos, datos y torrents
 
+### Ahorro de energia
+Editar /boot/firmware/usercfg.txt y agregar:
 
+    #Off-Wifi
+    dtoverlay=disable-wifi
+    #Off-Bluetooth
+    dtoverlay=disable-bt
+    #Off-Audio
+    force_pwm_open=0
 
     
     
