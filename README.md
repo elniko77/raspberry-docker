@@ -1,4 +1,4 @@
-# raspberry-setup
+# raspberry-docker-setup
 
 En este repositorio voy a documentar la configuración de mi raspberry pi 4. La mayoría de cosas servirían para otras versiones.
 
