@@ -44,8 +44,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./configs/pihole:/etc/pihole
-      run `touch ./pihole/pihole.log` first unless you like errors
-  - ./configs/pihole/pihole.log:/var/log/pihole.log
+      #run `touch ./pihole/pihole.log` first unless you like errors
+      - ./configs/pihole/pihole.log:/var/log/pihole.log
       - ./configs/pihole/dnsmasq.d:/etc/dnsmasq.d
     cap_add:
       - NET_ADMIN
