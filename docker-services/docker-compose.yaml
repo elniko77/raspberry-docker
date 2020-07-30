@@ -30,3 +30,27 @@ services:
       - /usr/share/zoneinfo/America/Argentina/Buenos_Aires:/etc/localtime
       - /mnt/media/Media:/datos
       - /mnt/media/torrents:/torrents
+  
+  pihole:
+    container_name: pihole
+    hostname: pihole
+    image: pihole/pihole:latest
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      # - '67:67/udp'
+      - '80:80'
+      - '443:443'
+    restart: unless-stopped
+    volumes:
+      - ./configs/pihole:/etc/pihole
+      run `touch ./pihole/pihole.log` first unless you like errors
+  - ./configs/pihole/pihole.log:/var/log/pihole.log
+      - ./configs/pihole/dnsmasq.d:/etc/dnsmasq.d
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - TZ=America/Argentina/Buenos_Aires
+      - WEBPASSWORD=admin
+      - DNS1=127.0.0.1
+      - DNS2=1.1.1.1
