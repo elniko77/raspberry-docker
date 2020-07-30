@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+
+  transmission:
+    image : jaymoulin/transmission
+    command: transmission-daemon -f -g /config
+    volumes:
+      - ./configs/transmission:/config
+      - /mnt/media/torrents:/downloads
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    expose:
+      - 9091
+    restart: unless-stopped
+
+  samba:
+    image: dperson/samba:rpi
+    restart: always
+    # Cambiar el usuario y password del share
+    command: '-u "pi;password" -s "datos;/datos;yes;no" -s "torrents;/torrents;yes;no"'
+    stdin_open: true
+    tty: true
+    ports:
+      - 139:139
+      - 445:445
+    volumes:
+      - /usr/share/zoneinfo/America/Argentina/Buenos_Aires:/etc/localtime
+      - /mnt/media/Media:/datos
+      - /mnt/media/torrents:/torrents
