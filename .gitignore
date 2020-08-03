@@ -1,3 +1,6 @@
 docker-services/configs/pihole/*
 docker-services/configs/znc/configs/znc.conf
+docker-services/configs/znc/configs/znc.conf.pre-1.6.3
+docker-services/configs/znc/moddata/
+docker-services/configs/znc/users/
 
