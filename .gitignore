@@ -1,0 +1,3 @@
+docker-services/configs/pihole/*
+docker-services/configs/znc/configs/znc.conf
+
