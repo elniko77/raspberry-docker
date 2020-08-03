@@ -54,3 +54,13 @@ services:
       - WEBPASSWORD=admin
       - DNS1=127.0.0.1
       - DNS2=1.1.1.1
+
+  znc:
+    container_name: znc
+    image: yyolk/rpi-docker-znc
+    ports:
+      - '12345:12345'
+    restart: unless-stopped
+    volumes:
+      #- ./home/nss/raspberry-docker/docker-services/configs/znc:/znc-data yyolk/rpi-docker-znc
+      - ./configs/znc:/znc-data
