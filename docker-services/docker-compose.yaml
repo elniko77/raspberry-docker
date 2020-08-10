@@ -64,3 +64,17 @@ services:
     volumes:
       #- ./home/nss/raspberry-docker/docker-services/configs/znc:/znc-data yyolk/rpi-docker-znc
       - ./configs/znc:/znc-data
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=America/Argentina/Buenos_Aires
+    volumes:
+      - ./configs/heimdall/config:/config
+    ports:
+      - 8180:80
+      - 4443:443
+    restart: unless-stopped
